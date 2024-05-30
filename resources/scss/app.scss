@@ -1,0 +1,7 @@
+@use "partials/variables" as *;
+@use "partials/admin-projects-index";
+@import "~bootstrap/scss/bootstrap";
+
+body {
+    background-color: $bg-dark;
+}
