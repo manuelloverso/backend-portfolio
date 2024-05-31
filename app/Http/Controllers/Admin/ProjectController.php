@@ -53,6 +53,7 @@ class ProjectController extends Controller
             $img_path = Storage::put('uploads', $val_data['image']);
             $val_data['image'] = $img_path;
         }
+
         $project = Project::create($val_data);
         if ($request->has('technologies')) {
             $project->technologies()->attach($val_data['technologies']);
@@ -100,6 +101,10 @@ class ProjectController extends Controller
             $img_path = Storage::put('uploads', $val_data['image']);
             //dd($validated, $image_path);
             $val_data['image'] = $img_path;
+        }
+
+        if (!$request->has('is_in_evidence')) {
+            $val_data['is_in_evidence'] = 0;
         }
 
         //dd($val_data);

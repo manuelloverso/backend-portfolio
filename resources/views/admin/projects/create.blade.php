@@ -16,12 +16,58 @@
             @enderror
         </div>
 
+        {{-- In Evidence input --}}
+        <div class="mb-3 d-flex gap-4">
+            <div class="form-check">
+                <label class="form-check-label" for="is_in_evidence"> In Evidence
+                </label>
+                <input name="is_in_evidence" class="form-check-input" type="checkbox" value="1" id="is_in_evidence"
+                    {{ old('is_in_evidence') ? 'checked' : '' }} />
+
+            </div>
+        </div>
+        @error('is_in_evidence')
+            <div class="text-danger">{{ $message }}</div>
+        @enderror
+
         {{-- Image input --}}
         <div class="mb-3">
             <label for="image" class="form-label">Image</label>
             <input type="file" name="image" id="image" class="form-control  @error('image') is-invalid @enderror"
                 placeholder="add an image" value="{{ old('image') }}" />
             @error('image')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+
+        {{-- Preview Link input --}}
+        <div class="mb-3">
+            <label for="preview_link" class="form-label">Preview Link</label>
+            <input type="text" name="preview_link" id="preview_link"
+                class="form-control  @error('preview_link') is-invalid @enderror"
+                placeholder="add a link for the project preview" value="{{ old('preview_link') }}" />
+            @error('preview_link')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+
+        {{-- GitHub Link input --}}
+        <div class="mb-3">
+            <label for="github_link" class="form-label">GitHub Link</label>
+            <input type="text" name="github_link" id="github_link"
+                class="form-control  @error('github_link') is-invalid @enderror"
+                placeholder="add a link for the project's github" value="{{ old('github_link') }}" />
+            @error('github_link')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+
+        {{-- YouTube Link input --}}
+        <div class="mb-3">
+            <label for="yt_link" class="form-label">YouTube Link</label>
+            <input type="text" name="yt_link" id="yt_link" class="form-control  @error('yt_link') is-invalid @enderror"
+                placeholder="add a link for the project' showcase video" value="{{ old('yt_link') }}" />
+            @error('yt_link')
                 <div class="text-danger">{{ $message }}</div>
             @enderror
         </div>
