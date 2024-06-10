@@ -20,14 +20,6 @@ class TechnologyController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        // Adding new technologies directly from the index
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(StoreTechnologyRequest $request)
@@ -38,14 +30,6 @@ class TechnologyController extends Controller
         //dd($val_data);
         Technology::create($val_data);
         return to_route('admin.technologies.index')->with('message', 'Technology added successfully');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Technology $technology)
-    {
-        // There's not much to show
     }
 
     /**
