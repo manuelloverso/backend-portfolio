@@ -28,8 +28,8 @@ class MailMessage extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: new Address('hello@example.com', 'Manuel'),
-            subject: 'Mail Message',
+            from: new Address('hello@example.com'),
+            subject: 'Nuovo messaggio ricevuto',
         );
     }
 
