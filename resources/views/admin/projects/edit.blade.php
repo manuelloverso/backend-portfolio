@@ -77,6 +77,30 @@
             @enderror
         </div>
 
+        {{-- FrontEnd GitHub Link input --}}
+        <div class="mb-3">
+            <label for="frontend_link" class="form-label">Frontend repo Link</label>
+            <input type="text" name="frontend_link" id="frontend_link"
+                class="form-control  @error('frontend_link') is-invalid @enderror"
+                placeholder="add a link for the project's github"
+                value="{{ old('frontend_link', $project->frontend_link) }}" />
+            @error('frontend_link')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+
+        {{-- Backend GitHub Link input --}}
+        <div class="mb-3">
+            <label for="backend_link" class="form-label">GitHub Link</label>
+            <input type="text" name="backend_link" id="backend_link"
+                class="form-control  @error('backend_link') is-invalid @enderror"
+                placeholder="add a link for the project's github"
+                value="{{ old('backend_link', $project->backend_link) }}" />
+            @error('backend_link')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+
         {{-- YouTube Link input --}}
         <div class="mb-3">
             <label for="yt_link" class="form-label">YouTube Link</label>
@@ -108,12 +132,12 @@
                 <div class="form-check">
                     {{-- @dd($project->technologies->contains($technology)) --}}
                     @if ($errors->any())
-                        <input name="technologies[]" class="form-check-input" type="checkbox" value="{{ $technology->id }}"
-                            id="technology-{{ $technology->id }}"
+                        <input name="technologies[]" class="form-check-input" type="checkbox"
+                            value="{{ $technology->id }}" id="technology-{{ $technology->id }}"
                             {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }} />
                     @else
-                        <input name="technologies[]" class="form-check-input" type="checkbox" value="{{ $technology->id }}"
-                            id="technology-{{ $technology->id }}"
+                        <input name="technologies[]" class="form-check-input" type="checkbox"
+                            value="{{ $technology->id }}" id="technology-{{ $technology->id }}"
                             {{ $project->technologies->contains($technology) ? 'checked' : '' }} />
                     @endif
                     <label class="form-check-label" for="technology-{{ $technology->id }}"> {{ $technology->name }}

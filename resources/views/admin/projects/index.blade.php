@@ -33,11 +33,11 @@
                         <td scope="row"><strong>{{ $project->id }}</strong></td>
                         <td>{{ $project->title }}</td>
                         <td>
-                            @if (str_starts_with($project->image, 'uploads/'))
-                                <img height="80" width="150" src="{{ asset('storage/' . $project->image) }}"
+                            @if (str_starts_with($project->card_image, 'uploads/'))
+                                <img height="80" width="150" src="{{ asset('storage/' . $project->card_image) }}"
                                     alt="">
                             @else
-                                <img height="80" width="150" src="{{ $project->image }}" alt="">
+                                <img height="80" width="150" src="{{ $project->card_image }}" alt="">
                             @endif
                         </td>
                         <td style="max-width: 200px" class="truncate">{{ $project->description }}</td>

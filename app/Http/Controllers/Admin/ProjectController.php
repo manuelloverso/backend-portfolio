@@ -21,7 +21,7 @@ class ProjectController extends Controller
     {
         //dd(Project::find(6)->with('technologies'));
         //dd(Project::all());
-        $projects = Project::orderByDesc('id')->get();
+        $projects = Project::orderByDesc('date')->get();
         $technologies = Technology::all();
 
         //filtered
@@ -43,7 +43,6 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
-        //dd($request->all());
         $val_data = $request->validated();
         $slug = Str::slug($request->title, '-');
         $val_data['slug'] = $slug;
@@ -97,15 +96,23 @@ class ProjectController extends Controller
 
         //image ok
         //check if the request is submitted with an image
-        if ($request->has('image')) {
-            //check if the project already had another image
-            if ($project->image) {
+        if ($request->has('card_image')) {
+            //check if the project already had another card_image
+            if ($project->card_image) {
                 //if so we delete it
-                Storage::delete($project->image);
+                Storage::delete($project->card_image);
             }
-            $img_path = Storage::put('uploads', $val_data['image']);
+            $img_path = Storage::put('uploads', $val_data['card_image']);
             //dd($validated, $image_path);
-            $val_data['image'] = $img_path;
+            $val_data['card_image'] = $img_path;
+        }
+
+        if ($request->has('show_image')) {
+            if ($project->show_image) {
+                Storage::delete($project->show_image);
+            }
+            $img_path = Storage::put('uploads', $val_data['show_image']);
+            $val_data['show_image'] = $img_path;
         }
 
         if (!$request->has('is_in_evidence')) {
@@ -127,8 +134,12 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        if ($project->image) {
-            Storage::delete($project->image);
+        if ($project->card_image) {
+            Storage::delete($project->card_image);
+        }
+
+        if ($project->show_image) {
+            Storage::delete($project->show_image);
         }
         //$project->technologies()->detach();
         $project->delete();
