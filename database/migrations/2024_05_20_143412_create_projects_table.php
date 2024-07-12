@@ -15,9 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('title', 50)->unique();
             $table->string('slug', 50);
-            $table->string('image')->nullable();
+            $table->string('card_image')->nullable();
+            $table->string('show_image')->nullable();
             $table->string('preview_link', 100)->nullable();
             $table->string('github_link', 100)->nullable();
+            $table->string('frontend_link', 100)->nullable();
+            $table->string('backend_link', 100)->nullable();
             $table->string('yt_link', 100)->nullable();
             $table->text('description')->nullable();
             $table->date('date')->nullable();

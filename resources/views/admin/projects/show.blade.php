@@ -7,10 +7,10 @@
         <div class="col-4">
             <div class="card">
                 <div class="card-img">
-                    @if (str_starts_with($project->image, 'uploads/'))
-                        <img class="w-100" src="{{ asset('storage/' . $project->image) }}" alt="">
+                    @if (str_starts_with($project->card_image, 'uploads/'))
+                        <img class="w-100" src="{{ asset('storage/' . $project->card_image) }}" alt="">
                     @else
-                        <img class="w-100" src="{{ $project->image }}" alt="">
+                        <img class="w-100" src="{{ $project->card_image }}" alt="">
                     @endif
                 </div>
                 <div class="card-body">

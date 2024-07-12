@@ -49,9 +49,14 @@ class ProjectController extends Controller
         $val_data['slug'] = $slug;
         //image
         //dd($val_data);
-        if ($request->has('image')) {
-            $img_path = Storage::put('uploads', $val_data['image']);
-            $val_data['image'] = $img_path;
+        if ($request->has('card_image')) {
+            $img_path = Storage::put('uploads', $val_data['card_image']);
+            $val_data['card_image'] = $img_path;
+        }
+
+        if ($request->has('show_image')) {
+            $img_path = Storage::put('uploads', $val_data['show_image']);
+            $val_data['show_image'] = $img_path;
         }
 
         $project = Project::create($val_data);
