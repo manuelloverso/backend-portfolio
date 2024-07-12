@@ -19,7 +19,8 @@ class ProjectSeeder extends Seeder
             $newProject = new Project();
             $newProject->title = $faker->words(3, true);
             $newProject->slug = Str::slug($newProject->title, '-');
-            $newProject->image = $faker->imageUrl(100, 70, 'Projects', true, $newProject->title, false, 'png');
+            $newProject->card_image = $faker->imageUrl(100, 70, 'Projects', true, $newProject->title, false, 'png');
+            $newProject->show_image = $newProject->card_image;
             $newProject->description = $faker->words(20, true);
             $newProject->date = $faker->date();
             $newProject->save();

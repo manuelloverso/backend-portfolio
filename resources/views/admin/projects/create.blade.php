@@ -30,15 +30,28 @@
             <div class="text-danger">{{ $message }}</div>
         @enderror
 
-        {{-- Image input --}}
+        {{-- Card Image input --}}
         <div class="mb-3">
-            <label for="image" class="form-label">Image</label>
-            <input type="file" name="image" id="image" class="form-control  @error('image') is-invalid @enderror"
-                placeholder="add an image" value="{{ old('image') }}" />
-            @error('image')
+            <label for="card_image" class="form-label">Add the image that will be shown in the card</label>
+            <input type="file" name="card_image" id="card_image"
+                class="form-control  @error('card_image') is-invalid @enderror" placeholder="add the card_image"
+                value="{{ old('card_image') }}" />
+            @error('card_image')
                 <div class="text-danger">{{ $message }}</div>
             @enderror
         </div>
+
+        {{-- Show Image input --}}
+        <div class="mb-3">
+            <label for="show_image" class="form-label">Add the image that will be shown in the single project page</label>
+            <input type="file" name="show_image" id="show_image"
+                class="form-control  @error('show_image') is-invalid @enderror" placeholder="add the show_image"
+                value="{{ old('show_image') }}" />
+            @error('show_image')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+
 
         {{-- Preview Link input --}}
         <div class="mb-3">
@@ -61,6 +74,30 @@
                 <div class="text-danger">{{ $message }}</div>
             @enderror
         </div>
+
+        {{-- Frontend GitHub Repo Link input --}}
+        <div class="mb-3">
+            <label for="frontend_link" class="form-label">Frontend repo link</label>
+            <input type="text" name="frontend_link" id="frontend_link"
+                class="form-control  @error('frontend_link') is-invalid @enderror"
+                placeholder="add a link for the project's github" value="{{ old('frontend_link') }}" />
+            @error('frontend_link')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+
+        {{-- Backend GitHub Repo Link input --}}
+        <div class="mb-3">
+            <label for="backend_link" class="form-label">Backend repo link</label>
+            <input type="text" name="backend_link" id="backend_link"
+                class="form-control  @error('backend_link') is-invalid @enderror"
+                placeholder="add a link for the project's github" value="{{ old('backend_link') }}" />
+            @error('backend_link')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+
+
 
         {{-- YouTube Link input --}}
         <div class="mb-3">

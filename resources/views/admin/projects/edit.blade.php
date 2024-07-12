@@ -31,12 +31,24 @@
             <div class="text-danger">{{ $message }}</div>
         @enderror
 
-        {{-- image input --}}
+        {{-- card image input --}}
         <div class="mb-3">
-            <label for="image" class="form-label">Image</label>
-            <input type="file" name="image" id="image" class="form-control  @error('image') is-invalid @enderror"
-                placeholder="add the image" value="{{ old('image', $project->image) }}" />
-            @error('image')
+            <label for="card_image" class="form-label">Image that will be shown in the crad</label>
+            <input type="file" name="card_image" id="card_image"
+                class="form-control  @error('card_image') is-invalid @enderror" placeholder="add the card_image"
+                value="{{ old('card_image', $project->card_image) }}" />
+            @error('card_image')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+
+        {{-- show image input --}}
+        <div class="mb-3">
+            <label for="show_image" class="form-label">Image that will be shown in the single project page</label>
+            <input type="file" name="show_image" id="show_image"
+                class="form-control  @error('show_image') is-invalid @enderror" placeholder="add the show_image"
+                value="{{ old('show_image', $project->show_image) }}" />
+            @error('show_image')
                 <div class="text-danger">{{ $message }}</div>
             @enderror
         </div>
