@@ -28,7 +28,7 @@ class MailMessage extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: new Address('hello@example.com'),
+            from: new Address('portfolio.manuel.loverso@gmail.com'),
             subject: 'Nuovo messaggio ricevuto',
         );
     }

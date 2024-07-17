@@ -27,7 +27,7 @@ class LeadController extends Controller
             ]);
         } else {
             $newLead = Contact::create($request->all());
-            Mail::to('hello@example.com')->send(new MailMessage($newLead));
+            Mail::to('manuel.loverso.dev@gmail.com')->send(new MailMessage($newLead));
             return response()->json([
                 'success' => true,
                 'message' => 'submitted successfully'
