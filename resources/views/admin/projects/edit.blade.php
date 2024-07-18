@@ -31,27 +31,55 @@
             <div class="text-danger">{{ $message }}</div>
         @enderror
 
-        {{-- card image input --}}
-        <div class="mb-3">
-            <label for="card_image" class="form-label">Image that will be shown in the crad</label>
-            <input type="file" name="card_image" id="card_image"
-                class="form-control  @error('card_image') is-invalid @enderror" placeholder="add the card_image"
-                value="{{ old('card_image', $project->card_image) }}" />
-            @error('card_image')
-                <div class="text-danger">{{ $message }}</div>
-            @enderror
+        {{-- card image --}}
+        <div class="img-input mb-3 d-flex gap-2">
+            {{-- old image --}}
+            @if (Str::startsWith($project->card_image, 'https://'))
+                <img width="150" loading="lazy" src="{{ $project->card_image }}" alt="">
+            @else
+                <img width="150" loading="lazy" src="{{ asset('storage/' . $project->card_image) }}" alt="">
+            @endif
+
+
+            {{-- card image input --}}
+            <div class="mb-3">
+
+                <label for="card_image" class="form-label">Image that will be shown in the crad</label>
+
+                <input type="file" name="card_image" id="card_image"
+                    class="form-control  @error('card_image') is-invalid @enderror" placeholder="add the card_image"
+                    value="{{ old('card_image', $project->card_image) }}" />
+                @error('card_image')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
         </div>
 
-        {{-- show image input --}}
-        <div class="mb-3">
-            <label for="show_image" class="form-label">Image that will be shown in the single project page</label>
-            <input type="file" name="show_image" id="show_image"
-                class="form-control  @error('show_image') is-invalid @enderror" placeholder="add the show_image"
-                value="{{ old('show_image', $project->show_image) }}" />
-            @error('show_image')
-                <div class="text-danger">{{ $message }}</div>
-            @enderror
+
+        {{-- show image  --}}
+        <div class="img-input mb-3 d-flex gap-2">
+            {{-- old image --}}
+            @if (Str::startsWith($project->show_image, 'https://'))
+                <img width="150" loading="lazy" src="{{ $project->show_image }}" alt="">
+            @else
+                <img width="150" loading="lazy" src="{{ asset('storage/' . $project->show_image) }}" alt="">
+            @endif
+
+
+            {{-- show image input --}}
+            <div class="mb-3">
+
+                <label for="show_image" class="form-label">Image that will be shown in the crad</label>
+
+                <input type="file" name="show_image" id="show_image"
+                    class="form-control  @error('show_image') is-invalid @enderror" placeholder="add the show_image"
+                    value="{{ old('show_image', $project->show_image) }}" />
+                @error('show_image')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
         </div>
+
 
         {{-- Preview Link input --}}
         <div class="mb-3">
@@ -104,8 +132,10 @@
         {{-- YouTube Link input --}}
         <div class="mb-3">
             <label for="yt_link" class="form-label">YouTube Link</label>
-            <input type="text" name="yt_link" id="yt_link" class="form-control  @error('yt_link') is-invalid @enderror"
-                placeholder="add a link for the project' showcase video" value="{{ old('yt_link', $project->yt_link) }}" />
+            <input type="text" name="yt_link" id="yt_link"
+                class="form-control  @error('yt_link') is-invalid @enderror"
+                placeholder="add a link for the project' showcase video"
+                value="{{ old('yt_link', $project->yt_link) }}" />
             @error('yt_link')
                 <div class="text-danger">{{ $message }}</div>
             @enderror
